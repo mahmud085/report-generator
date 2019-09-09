@@ -17,10 +17,16 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 0,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: -10,
+    },
+    'src/**/*.ts': {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: -10,
     },
   },
 };
