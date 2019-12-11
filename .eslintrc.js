@@ -8,6 +8,10 @@ module.exports = {
     'import/no-named-as-default-member': 0,
     'no-console': 0,
     '@typescript-eslint/indent': ['error', 2],
+    'import/extensions': ['error', {
+      'ts': 'never',
+      'tsx': 'never',
+    }],
   },
   parser: '@typescript-eslint/parser',
   env: {
