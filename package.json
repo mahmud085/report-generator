@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/mediatain/ts-project-template#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.5",
+    "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
     "@babel/runtime": "^7.7.6",
