@@ -1,0 +1,22 @@
+name: ESLint, Tests, Build
+
+on: pull_request
+
+jobs:
+  'check-test-build':
+    runs-on: ubuntu-latest
+    steps:    
+    - name: Checkout Repository
+      uses: actions/checkout@v1
+    - name: Setup Node.JS v10
+      uses: actions/setup-node@v1.1.0
+      with:
+        node-version: '10.x'
+    - name: Install npm dependencies
+      run: npm ci
+    - name: Run Static Checks
+      run: npm run check
+    - name: Test
+      run: npm run test
+    - name: Build
+      run: npm run build
