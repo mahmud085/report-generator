@@ -1,9 +1,9 @@
-name: ESLint, Tests, Build
+name: ESLint, Tests
 
 on: pull_request
 
 jobs:
-  'check-test-build':
+  'check-test':
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout Repository
@@ -18,5 +18,3 @@ jobs:
       run: npm run check
     - name: Test
       run: npm run test
-    - name: Build
-      run: npm run build
