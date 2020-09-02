@@ -1,33 +1,23 @@
 {
-  "name": "project-name",
+  "name": "autoscout-report-generator",
   "version": "1.0.0",
   "description": "Project description",
   "main": "src/index.ts",
   "scripts": {
+    "start": "ts-node src/index.ts",
     "test": "npm run test:unit",
     "test:unit": "jest $NODE_DEBUG_OPTION src/",
     "test:coverage": "jest $NODE_DEBUG_OPTION --coverage src/",
     "test:watch": "jest $NODE_DEBUG_OPTION --watch src/",
-    "check": "npm run check:types && npm run check:lint",
-    "check:types": "tsc",
     "check:lint": "eslint src/**/*.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mediatain/ts-project-template.git"
-  },
-  "author": "",
+  "author": "Abdullah Al Mahmud",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mediatain/ts-project-template/issues"
-  },
-  "homepage": "https://github.com/mediatain/ts-project-template#readme",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/preset-typescript": "^7.7.7",
     "@babel/runtime": "^7.7.7",
-    "@commitlint/cli": "^8.2.0",
     "@types/jest": "^24.0.24",
     "@types/node": "^12.12.21",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
@@ -40,9 +30,11 @@
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
-    "husky": "^3.1.0",
     "jest": "^24.9.0",
-    "typescript": "^3.7.3"
+    "ts-node": "^9.0.0",
+    "typescript": "^3.7.3",
+    "csv-parser": "^2.3.3",
+    "inquirer": "^7.3.3"
   },
   "dependencies": {}
 }
