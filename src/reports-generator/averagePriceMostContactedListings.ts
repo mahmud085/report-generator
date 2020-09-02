@@ -1,6 +1,6 @@
 import { totalAmountOfContacts } from '../helpers/totalAmountOfContacts';
 import { getListById } from '../helpers/getListById';
-import { generateOutput } from '../output/output-writer';
+import { generateOutput } from '../output-generator/output-writer';
 import { ListType } from '../types/list';
 import { ContactType } from '../types/contact';
 
@@ -11,6 +11,7 @@ export async function averagePriceMostContactedListings(listings: ListType[], co
   let results = await Promise.all(listingIds.map(async (listing_id) => {
     let num_of_contacts = await totalAmountOfContacts(contacts,listing_id);
     let list_by_id = await getListById(listings, listing_id);
+    
     return {
       "id": list_by_id?.id,
       "price": list_by_id?.price,

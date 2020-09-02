@@ -1,15 +1,23 @@
-import { generateOutput } from "../output/output-writer";
+import { generateOutput } from "../output-generator/output-writer";
 import { ListType } from "../types/list";
+
+function filterSeller(listings: ListType[], sellerType: string) {
+  return listings.filter((list: ListType) => list.seller_type === sellerType);
+}
+
+function calculateAverageSellingPrice(sellers: ListType[]) {
+  return sellers.reduce((total: number, next: ListType) => total + next.price, 0 ) / sellers.length;
+}
 
 export async function averagePriceBySeller(listings: ListType[]) {
 
- const private_seller = await listings.filter((list: ListType) => list.seller_type === 'private');
- const dealer_seller = await listings.filter((list: ListType) => list.seller_type === 'dealer');
- const other_seller = await listings.filter((list: ListType) => list.seller_type === 'other');
+ const private_sellers = await filterSeller(listings, 'private');
+ const dealer_sellers = await filterSeller(listings, 'dealer');
+ const other_sellers = await filterSeller(listings, 'other');
 
- const avgPriceForPrivateSeller = await private_seller.reduce((total: number, next: ListType) => total + next.price, 0 ) / private_seller.length;
- const avgPriceForDealerSeller = await dealer_seller.reduce((total: number, next: ListType) => total + next.price, 0 ) / dealer_seller.length;
- const avgPriceForOtherSeller = await other_seller.reduce((total: number, next: ListType) => total + next.price, 0 ) / other_seller.length;
+ const avgPriceForPrivateSeller = await calculateAverageSellingPrice(private_sellers);
+ const avgPriceForDealerSeller = await calculateAverageSellingPrice(dealer_sellers);
+ const avgPriceForOtherSeller = await calculateAverageSellingPrice(other_sellers);
  
  const results = [
   {

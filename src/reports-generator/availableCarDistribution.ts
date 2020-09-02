@@ -1,4 +1,4 @@
-import { generateOutput } from "../output/output-writer";
+import { generateOutput } from "../output-generator/output-writer";
 import { ListType } from "../types/list";
 
 function calculatePercentage(carsByMake: number, totalCars: number) {
