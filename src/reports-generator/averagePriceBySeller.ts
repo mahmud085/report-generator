@@ -6,6 +6,7 @@ function filterSeller(listings: ListType[], sellerType: string) {
 }
 
 function calculateAverageSellingPrice(sellers: ListType[]) {
+  if(sellers.length === 0) return 0;
   return sellers.reduce((total: number, next: ListType) => total + next.price, 0 ) / sellers.length;
 }
 

@@ -9,6 +9,21 @@ import { averagePriceMostContactedListings } from './reports-generator/averagePr
 import { ContactType } from './types/contact';
 import { ListType } from './types/list';
 
+const months = [
+  {name: 'January', value: 1},
+  {name: 'February', value: 2},
+  {name: 'March', value: 3},
+  {name: 'April', value: 4},
+  {name: 'May', value: 5},
+  {name: 'June', value: 6},
+  {name: 'July', value: 7},
+  {name: 'August', value: 8},
+  {name: 'September', value: 9},
+  {name: 'October', value: 10},
+  {name: 'November', value: 11},
+  {name: 'December', value: 12}
+];
+
 function index() {
   inquirer
   .prompt([
@@ -34,17 +49,21 @@ function index() {
           value: 3,
         },
       ],
+      validate: function (answer: any) {
+        if (answer.length < 1) {
+          return 'You must choose at least one option.';
+        }
+
+        return true;
+      },
     },
     {
-      'type': 'input',
+      'type': 'list',
       'name': 'month',
       'message': 'Which month report you want to generate?',
-      'when': (answers: any) => answers.reports.includes(3),
-      'validate': function (value: any) {
-        if(value >= 1 && value <= 12) return true;
-        return "Enter month between 1 to 12";
-      }
-    },    {
+      'choices': months,
+      'when': (answers: any) => answers.reports.includes(3)
+    }, {
       'type': 'input',
       'name': 'year',
       'message': 'In which year?',
@@ -56,7 +75,6 @@ function index() {
     }
   ])
   .then( async (answers: any) => {
-
     const listings =  (await CSVParser('listings.csv', listParser) as ListType[]);
     const contacts = (await CSVParser('contacts.csv', contactParser) as ContactType[]);
 

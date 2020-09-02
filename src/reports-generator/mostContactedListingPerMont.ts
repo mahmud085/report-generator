@@ -12,13 +12,13 @@ export async function mostContactedListingPerMonth(listings: ListType[], contact
 
   let results = await Promise.all(listingIds.map(async (listing_id) => {
     const num_of_contacts = await totalAmountOfContacts(filteredContacts,listing_id);
-    const list_by_id = await getListById(listings, listing_id);
+    const list_by_id = (await getListById(listings, listing_id) as ListType);
     
     return {
-      "Listing Id": list_by_id?.id,
-      "Make": list_by_id?.make,
-      "Selling Price": `€ ${list_by_id?.price},-`,
-      "Mileage": `${list_by_id?.mileage} KM`,
+      "Listing Id": list_by_id.id,
+      "Make": list_by_id.make,
+      "Selling Price": `€ ${list_by_id.price},-`,
+      "Mileage": `${list_by_id.mileage} KM`,
       "Total_amount_of_contacts": num_of_contacts
     }
   }));

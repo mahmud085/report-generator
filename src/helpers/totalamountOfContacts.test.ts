@@ -3,25 +3,25 @@ import { totalAmountOfContacts } from './totalAmountOfContacts';
 const mockList = [
   {  
     listing_id: 1,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   },
   {  
     listing_id: 2,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   },  {  
     listing_id: 1,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   },
   {  
     listing_id: 1,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   },  {  
     listing_id: 2,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   },
   {  
     listing_id: 4,
-    contact_date: 1578249098000
+    contact_date: '1578249098000'
   }
 ];
 
