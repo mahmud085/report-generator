@@ -24,7 +24,11 @@ const months = [
   {name: 'December', value: 12}
 ];
 
-function index() {
+async function index() {
+
+  const listings =  (await CSVParser('listings.csv', listParser) as ListType[]);
+  const contacts = (await CSVParser('contacts.csv', contactParser) as ContactType[]);
+
   inquirer
   .prompt([
     {
@@ -75,9 +79,6 @@ function index() {
     }
   ])
   .then( async (answers: any) => {
-    const listings =  (await CSVParser('listings.csv', listParser) as ListType[]);
-    const contacts = (await CSVParser('contacts.csv', contactParser) as ContactType[]);
-
     if(answers.reports.includes(0)){
       averagePriceBySeller(listings);
     }
